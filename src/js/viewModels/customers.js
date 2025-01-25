@@ -8,40 +8,71 @@
 /*
  * Your customer ViewModel code goes here
  */
-define(['../accUtils'],
- function(accUtils) {
+define([
+  'knockout',
+  'utils/Core',
+  'ojs/ojtranslation',
+  'ojs/ojinputtext',
+  'ojs/ojinputnumber',
+  'ojs/ojformlayout'],
+ function(ko, CoreUtils, Translations) {
+
+    const _t = Translations.getTranslatedString;
     function CustomerViewModel() {
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
+      this._initAllIds();
+      this._initAllLabels();
+      this._initAllObservables();
+    }
 
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here.
-       * This method might be called multiple times - after the View is created
-       * and inserted into the DOM and after the View is reconnected
-       * after being disconnected.
-       */
-      this.connected = () => {
-        accUtils.announce('Customers page loaded.', 'assertive');
-        document.title = "Customers";
-        // Implement further logic if needed
-      };
+    /**
+     * @function _initAllIds
+     * @description Initializes all the ids.
+     */
+    CustomerViewModel.prototype._initAllIds = function() {      
+      this.inputFirstNameId = CoreUtils.generateUniqueId();
+      this.inputLastNameId = CoreUtils.generateUniqueId();
+      this.inputFullNameId = CoreUtils.generateUniqueId();
+      this.inputWeightId = CoreUtils.generateUniqueId();
+      this.inputAgeId = CoreUtils.generateUniqueId();
+    }
 
-      /**
-       * Optional ViewModel method invoked after the View is disconnected from the DOM.
-       */
-      this.disconnected = () => {
-        // Implement if needed
-      };
+    /**
+     * @function _initAllIds
+     * @description Initializes all the labels.
+     */
+    CustomerViewModel.prototype._initAllLabels = function() {
+      this.inputFirstNameLabel = _t('inputs.firstName');
+      this.inputLastNameLabel = _t('inputs.lastName');
+      this.inputFullNameLabel = _t('inputs.fullName');
+      this.inputWeightLabel = _t('inputs.weight');
+      this.inputAgeLabel = _t('inputs.age');
+    }
 
-      /**
-       * Optional ViewModel method invoked after transition to the new View is complete.
-       * That includes any possible animation between the old and the new View.
-       */
-      this.transitionCompleted = () => {
-        // Implement if needed
-      };
+    /**
+     * @function _initAllObservables
+     * @description Initializes all the observable values.
+     */
+    CustomerViewModel.prototype._initAllObservables = function() {
+      this.inputFirstNameValue = ko.observable(null);
+      this.inputLastNameValue = ko.observable(null);
+      this.inputFullNameValue = ko.observable(null);
+      this.inputAgeValue = ko.observable(null);
+
+      this.isInputLastNameDisabled = ko.observable(true);
+
+      this.onInputFirstNameValueChange = function(event) {
+        const value = event.detail.value;
+        if(value) {
+          this.isInputLastNameDisabled(false);
+          return;
+        }
+        this.isInputLastNameDisabled(true);
+        console.log(event);
+      }.bind(this);
+
+      this.inputLastNameValue.subscribe(function(_) {
+        this.inputFullNameValue(`${this.inputFirstNameValue()} ${this.inputLastNameValue()}`);
+      }, this);
     }
 
     /*
