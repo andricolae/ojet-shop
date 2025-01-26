@@ -21,7 +21,7 @@
 }
 
 .demo-oracle-icon:before {
-  content:url("images/oracle_logo.svg")
+  content:url("images/JET-Favicon-Red-32x32.png");
 }
 
 html:not([dir="rtl"]) .demo-oracle-icon {

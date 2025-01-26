@@ -1,0 +1,13 @@
+<div class="oj-flex oj-sm-flex-wrap oj-md-flex-wrap">
+  <oj-bind-for-each data="[[books]]">
+    <template>
+      <div class="oj-flex-item oj-sm-4 oj-md-4 oj-lg-4" style="margin: 10px;">
+        <div class="book-card" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <img data-bind="attr: {src: $current.data.image}" alt="Book Image" style="width: 100px; height: 150px; object-fit: cover;">
+          <h3 data-bind="text: $current.data.title"></h3>
+          <p data-bind="text: $current.data.author"></p>
+        </div>
+      </div>
+    </template>
+  </oj-bind-for-each>
+</div>

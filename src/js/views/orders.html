@@ -1,0 +1,14 @@
+<div>
+    <h2>Shopping Cart</h2>
+    <div class="oj-flex oj-sm-flex-wrap" data-bind="foreach: $parent.cartViewModel.cartItems">
+      <div class="oj-flex-item oj-sm-4 oj-md-4">
+        <div class="book-card" style="margin: 10px;">
+          <h3 data-bind="text: title"></h3>
+          <p data-bind="text: author"></p>
+          <p data-bind="text: category"></p>
+          <oj-button on-oj-action="function() { $parent.cartViewModel.removeFromCart($data) }">Remove</oj-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
