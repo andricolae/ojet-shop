@@ -38,8 +38,7 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknocko
         { path: 'browseBooks', detail: { label: 'Browse Books', iconClass: ' oj-ux-ico-browse' } },
         { path: 'statistics', detail: { label: 'Statistics', iconClass: 'oj-ux-ico-bar-chart' } },
         { path: 'orders', detail: { label: 'Orders', iconClass: 'oj-ux-ico-cart-alt' } },
-        { path: 'admin', detail: { label: 'Admin', iconClass: 'oj-ux-ico-administration' } },
-        { path: 'customers', detail: { label: 'Customers', iconClass: 'oj-ux-ico-contact-group' } },
+        { path: 'admin', detail: { label: 'Admin', iconClass: 'oj-ux-ico-contact-group' } },
       ];
 
       // self.cartViewModel = new Cart.cartViewModel();
