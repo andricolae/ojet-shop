@@ -4,31 +4,36 @@
         "id": 1,
         "name": "John Doe",
         "book": "Komplot",
-        "amount": "3"
+        "amount": "3",
+        "processed": "0"
       },
       {
         "id": 2,
         "name": "Jane White",
         "book": "Bestia",
-        "amount": "2"
+        "amount": "2",
+        "processed": "0"
       },
       {
         "id": 3,
         "name": "William Shakespeare",
         "book": "Bratarile doliului",
-        "amount": "5"
+        "amount": "5",
+        "processed": "0"
       },
       {
         "id": 4,
         "name": "Will Grant",
         "book": "O fata foarte draguta",
-        "amount": "1"
+        "amount": "1",
+        "processed": "0"
       },
       {
         "id": 5,
         "name": "Charles Marx",
         "book": "Golem",
-        "amount": "1"
+        "amount": "1",
+        "processed": "0"
       }
     ]
   }
