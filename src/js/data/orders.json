@@ -1,0 +1,34 @@
+{
+    "orders": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "book": "Komplot",
+        "amount": "3"
+      },
+      {
+        "id": 2,
+        "name": "Jane White",
+        "book": "Bestia",
+        "amount": "2"
+      },
+      {
+        "id": 3,
+        "name": "William Shakespeare",
+        "book": "Bratarile doliului",
+        "amount": "5"
+      },
+      {
+        "id": 4,
+        "name": "Will Grant",
+        "book": "O fata foarte draguta",
+        "amount": "1"
+      },
+      {
+        "id": 5,
+        "name": "Charles Marx",
+        "book": "Golem",
+        "amount": "1"
+      }
+    ]
+  }

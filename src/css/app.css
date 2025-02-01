@@ -16,12 +16,14 @@
 }
 
 .demo-oracle-icon {
-  width:137px;
-  height:18px
+  width:100px;
+  height:100px;
+  content:url("images/oracle_logo.svg");
+
 }
 
 .demo-oracle-icon:before {
-  content:url("images/oracle_logo.svg")
+  content:url("images/oracle_logo.svg");
 }
 
 html:not([dir="rtl"]) .demo-oracle-icon {
@@ -37,8 +39,8 @@ html[dir="rtl"] .demo-oracle-icon {
 }
 
 .demo-appheader-avatar {
-  width:24px;
-  height:24px
+  width:10px;
+  height:10px
 }
 
 .demo-appheader-avatar:before {

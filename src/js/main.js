@@ -53,6 +53,14 @@
         'chai': 'libs/chai/chai-4.3.10'
       }
       // endinjector
+      ,
+      config: {
+        ojL10n: {
+          merge: {
+            'ojtranslations/nls/ojtranslations': 'resources/nls/shopTranslations'
+          }
+        }
+      }
     }
   );
 }());

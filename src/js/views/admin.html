@@ -1,0 +1,56 @@
+<oj-form-layout 
+  id="formLayoutOpt" 
+  max-columns="4" 
+  direction="column"
+  class="oj-formlayout-full-width"
+  user-assistance-density="compact">
+    
+    <oj-input-text :id="[[inputTitleId]]" value="{{ inputTitleValue }}" label-hint="[[inputTitleLabel]]"></oj-input-text>
+
+    <oj-input-text :id="[[inputAuthorId]]" value="{{ inputAuthorValue }}" label-hint="[[inputAuthorLabel]]"></oj-input-text>
+
+    <oj-input-text :id="[[inputCategoryId]]" value="{{ inputCategoryValue }}" label-hint="[[inputCategoryLabel]]"></oj-input-text>
+
+    <oj-input-text :id="[[inputImageId]]" value="{{ inputImageValue }}" label-hint="[[inputImageLabel]]"></oj-input-text>
+
+    <oj-button data-bind="click: function() { addBook(document.getElementById([[inputTitleId]]).value, document.getElementById([[inputAuthorId]]).value, document.getElementById([[inputCategoryId]]).value, document.getElementById([[inputImageId]]).value) }">Insert Book</oj-button>
+
+    <oj-button data-bind="click: updateBook, visible: selectedBookId() !== null">Update Book</oj-button>
+
+  </oj-form-layout>
+
+<!-- <span>
+  <oj-bind-text value="[[inputTitleValue]]"></oj-bind-text>
+  <oj-bind-text value="[[inputAuthorValue]]"></oj-bind-text>
+  <oj-bind-text value="[[inputCategoryValue]]"></oj-bind-text>
+  <oj-bind-text value="[[inputImageValue]]"></oj-bind-text>
+</span> -->
+
+<div class="oj-flex oj-sm-flex-wrap oj-md-flex-wrap">
+  <oj-bind-for-each data="[[books]]">
+    <template>
+      <div class="oj-flex-item oj-sm-4 oj-md-4 oj-lg-4" style="margin: 10px;">
+        <div class="book-card" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <h3 data-bind="text: $current.data.title"></h3>
+          <oj-button data-bind="click: function() { selectBook($current.data) }">Edit</oj-button>
+          <oj-button data-bind="click: function() { deleteBook($current.data.id) }">Delete Book</oj-button>
+        </div>
+      </div>
+    </template>
+  </oj-bind-for-each>
+</div>
+
+<!-- <oj-dialog id="editDialog" title="Edit Book">
+  <div slot="body">
+    <oj-form-layout>
+      <oj-input-text label-hint="Title" value="{{ inputTitleValue }}"></oj-input-text>
+      <oj-input-text label-hint="Author" value="{{ inputAuthorValue }}"></oj-input-text>
+      <oj-input-text label-hint="Category" value="{{ inputCategoryValue }}"></oj-input-text>
+      <oj-input-text label-hint="Image" value="{{ inputImageValue }}"></oj-input-text>
+    </oj-form-layout>
+  </div>
+  <div slot="footer">
+    <oj-button data-bind="click: updateBook">Update</oj-button>
+    <oj-button data-bind="click: function() { document.getElementById('editDialog').close(); }">Cancel</oj-button>
+  </div>
+</oj-dialog> -->

@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "title": "Viata la viteza maxima",
+    "author": "Brigitte Giraud",
+    "category": "Science Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/2135303359-0-240.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "A mea e razbunarea",
+    "author": "Marie NDiaye",
+    "category": "Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/2077626543-0-240.jpeg"
+  },
+  {
+    "id": 3,
+    "title": "Bratarile doliului",
+    "author": "Brandon Sanderson",
+    "category": "Science",
+    "image": "https://cdn.dc5.ro/img-prod/1840049803-0-240.jpeg"
+  },
+  {
+    "id": 4,
+    "title": "Golem",
+    "author": "Gustav Meyrink",
+    "category": "Non-Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/2052895693-0-240.png"
+  },
+  {
+    "id": 5,
+    "title": "Bestia",
+    "author": "Carmen Mola",
+    "category": "Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/1981677393-0-240.jpeg"
+  },
+  {
+    "id": 6,
+    "title": "Komplot",
+    "author": "Alexandru Bogdan Ionescu",
+    "category": "Science",
+    "image": "https://cdn.dc5.ro/img-prod/1778324908-0-240.jpeg"
+  },
+  {
+    "id": 7,
+    "title": "Specialistul in gelozie si alte povestiri",
+    "author": "Jo Nesbo",
+    "category": "Non-Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/1817833579-0-240.jpeg"
+  },
+  {
+    "id": 8,
+    "title": "O fata foarte draguta",
+    "author": "Imogen Crimp",
+    "category": "Kids",
+    "image": "https://cdn.dc5.ro/img-prod/1964397716-0-240.jpeg"
+  },
+  {
+    "id": 9,
+    "title": "Test",
+    "author": "Test",
+    "category": "Test",
+    "image": "https://cdn.dc5.ro/img-prod/1964397716-0-240.jpeg"
+  },
+  {
+    "id": 10,
+    "title": "Test",
+    "author": "Test",
+    "category": "Test",
+    "image": "https://cdn.dc5.ro/img-prod/1964397716-0-240.jpeg"
+  },
+  {
+    "id": 14,
+    "title": "A fost odata un dulap",
+    "author": "Patti Callahan",
+    "category": "Fiction",
+    "image": "https://cdn.dc5.ro/img-prod/2020719677-0-240.jpeg"
+  }
+]
