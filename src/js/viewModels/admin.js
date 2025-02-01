@@ -79,13 +79,12 @@ define([
       this.deleteBook = (id) => {
         this.books.remove((book) => book.id === id);
 
-        // Send the delete request to the server
         fetch('http://localhost:3000/delete-book', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ id }) // Send only the id
+          body: JSON.stringify({ id })
         })
           .then(response => {
             if (!response.ok) {
