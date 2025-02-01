@@ -1,4 +1,109 @@
 <div>
     <h2>Latest Orders</h2>
 </div>
-  
+
+<div class="oj-hybrid-padding">
+
+    <div class="oj-flex oj-sm-flex-items-1">
+        <div
+             class="oj-flex-item oj-panel oj-sm-padding-2x-horizontal">
+            <div
+                 class="oj-typography-heading-md oj-header-border">
+                Order List</div>
+            <oj-list-view data="[[dataProvider]]"
+                          selection-mode="single"
+                          selection="{{selection}}">
+                <template slot="itemTemplate"
+                          data-oj-as="item">
+                    <strong>
+                        <oj-bind-text
+                                      value="[[item.data.book]]"></oj-bind-text>
+                    </strong>
+                    <div>
+                        <oj-bind-text
+                                      value="[[item.data.amount]]"></oj-bind-text>
+                    </div>
+                </template>
+            </oj-list-view>
+        </div>
+        <div
+             class="oj-flex-item oj-panel oj-sm-padding-2x-horizontal">
+            <div
+                 class="oj-typography-heading-md oj-header-border">
+                Order Details</div>
+            <oj-module
+                       config="[[module.koObservableConfig]]"></oj-module>
+        </div>
+    </div>
+</div>
+
+<div id="container">
+    <div class="oj-sm-float-start">
+        <h4 class="oj-sm-margin-2x-start">Pending Orders</h4>
+        <oj-list-view id="source"
+                      on-keydown="[[handleKeyCut]]"
+                      aria-label="list drag source"
+                      class="demo-list oj-listview-item-padding-off"
+                      data="[[sourceDataProvider]]"
+                      dnd.drag.items.data-types='["application/ojlistviewitems+json"]'
+                      dnd.drag.items.drag-start="[[handleDragStart]]"
+                      dnd.drag.items.drag-end="[[handleDragEnd]]"
+                      dnd.drop.items.data-types='["application/ojtablerows+json"]'>
+            <oj-menu slot="contextMenu"
+                     on-oj-menu-action="[[handleMenuCut]]">
+                <oj-option value="cut">Cut</oj-option>
+            </oj-menu>
+            <template slot="itemTemplate" data-oj-as="item">
+                <li
+                    :class="[[cutItem() === item.key ? 'demo-cut-item' : '']]">
+                    <oj-list-item-layout>
+                        <span
+                              class="oj-typography-body-md oj-text-color-primary">
+                            <oj-bind-text
+                                          value="[[item.item.data.name]]"></oj-bind-text>
+                        </span>
+                        <oj-avatar slot="leading" size="xs"
+                                   src="[[item.item.data.image]]"></oj-avatar>
+                        <span slot="secondary"
+                              class="oj-typography-body-sm oj-text-color-secondary">
+                            <oj-bind-text
+                                          value="[[item.item.data.title]]"></oj-bind-text>
+                        </span>
+                        <div :id="[[item.item.metadata.key + '_draghandle']]"
+                             slot="action"
+                             role="presentation"
+                             class="oj-sm-margin-4x-horizontal oj-listview-drag-handle">
+                        </div>
+                    </oj-list-item-layout>
+                </li>
+            </template>
+        </oj-list-view>
+    </div>
+    <div class="oj-sm-float-start oj-sm-margin-4x-start">
+        <h4 class="oj-sm-margin-2x-start">Processed Orders</h4>
+        <oj-list-view id="target"
+                      on-keydown="[[handleKeyPaste]]"
+                      aria-label="list drop target"
+                      class="demo-list oj-listview-item-padding-off"
+                      data="[[targetDataProvider]]"
+                      dnd.drop.items.data-types='["application/ojlistviewitems+json"]'
+                      dnd.drop.items.drop="[[handleDrop]]">
+            <oj-menu slot="contextMenu"
+                     on-oj-menu-action="[[handleMenuPaste]]">
+                <oj-option value="paste"
+                           disabled="[[cutItem() == null]]">Paste</oj-option>
+            </oj-menu>
+            <template slot="itemTemplate" data-oj-as="item">
+                <oj-list-item-layout>
+                    <span
+                          class="oj-typography-body-md oj-text-color-primary">
+                        <oj-bind-text
+                                      value="[[item.item.data.name]]"></oj-bind-text>
+                    </span>
+                    <oj-avatar slot="leading" size="xs"
+                               src="[[item.item.data.image]]"></oj-avatar>
+                </oj-list-item-layout>
+            </template>
+        </oj-list-view>
+    </div>
+</div>

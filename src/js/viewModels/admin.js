@@ -96,6 +96,53 @@ define([
             console.error('Error deleting book:', error);
           });
       };
+
+      this.selectedBookId = ko.observable(null);
+
+      this.selectBook = (book) => {
+        this.selectedBookId(book.id);
+        this.inputTitleValue(book.title);
+        this.inputAuthorValue(book.author);
+        this.inputCategoryValue(book.category);
+        this.inputImageValue(book.image);
+      };
+
+      this.updateBook = () => {
+        let updatedBook = {
+          id: this.selectedBookId(),
+          title: this.inputTitleValue(),
+          author: this.inputAuthorValue(),
+          category: this.inputCategoryValue(),
+          image: this.inputImageValue()
+        };
+  
+        let index = this.books().findIndex(b => b.id === this.selectedBookId());
+        if (index !== -1) {
+          this.books.splice(index, 1, updatedBook);
+        }
+  
+        fetch('http://localhost:3000/update-book', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedBook)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to update the book');
+          }
+          console.log('Book successfully updated on the server');
+        })
+        .catch(error => console.error('Error updating book:', error));
+  
+        this.selectedBookId(null);
+        this.inputTitleValue(null);
+        this.inputAuthorValue(null);
+        this.inputCategoryValue(null);
+        this.inputImageValue(null);
+      };
+
     }
 
     /**

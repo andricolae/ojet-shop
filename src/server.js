@@ -50,22 +50,65 @@ app.post('/delete-book', (req, res) => {
     });
 });
 
-app.post('/update-books', (req, res) => {
-    const updatedBooks = req.body;
-
+app.post('/update-book', (req, res) => {
+    const { id, title, author, category, image } = req.body;
     const filePath = path.join(__dirname, 'js/data/books.json');
 
-    fs.writeFile(filePath, JSON.stringify(updatedBooks, null, 2), (err) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
-            console.error('Error writing to books.json:', err);
-            return res.status(500).json({ error: 'Failed to update books.json' });
+            return res.status(500).json({ error: 'Failed to read books.json' });
         }
 
-        console.log('Books.json successfully updated');
-        res.json({ success: true });
+        let books = JSON.parse(data);
+        let bookIndex = books.findIndex(book => book.id === id);
+
+        if (bookIndex === -1) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
+        // Update book details
+        books[bookIndex] = { id, title, author, category, image };
+
+        fs.writeFile(filePath, JSON.stringify(books, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Failed to update book in books.json' });
+            }
+            console.log(`Book ID ${id} updated successfully`);
+            res.json({ success: true });
+        });
     });
 });
 
+
+
+
+const ordersFile = path.join(__dirname, 'js/data/orders.json');
+
+app.get('/orders', (req, res) => {
+    res.sendFile(ordersFile);
+});
+
+app.post('/update-order', (req, res) => {
+    const { id, status } = req.body;
+
+    fs.readFile(ordersFile, 'utf8', (err, data) => {
+        if (err) return res.status(500).json({ error: 'Failed to read orders.json' });
+
+        let orders = JSON.parse(data);
+        let orderIndex = orders.findIndex(order => order.id === id);
+
+        if (orderIndex === -1) return res.status(404).json({ error: 'Order not found' });
+
+        orders[orderIndex].status = status;
+
+        fs.writeFile(ordersFile, JSON.stringify(orders, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: 'Failed to update orders.json' });
+
+            console.log(`Order ${id} updated to ${status}`);
+            res.json({ success: true });
+        });
+    });
+});
 
 const PORT = 3000;
 app.listen(PORT, () => {

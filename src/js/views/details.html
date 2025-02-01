@@ -1,0 +1,11 @@
+<div class="oj-hybrid-padding">
+    <oj-bind-if test="[[record]]">
+        <oj-form-layout readonly="true">
+        <oj-input-text readonly="true" label-hint="Id" value="[[record().id]]"></oj-input-text>
+        <oj-input-text readonly="true"  label-hint="Nume cumparator" value="[[record().name]]"></oj-input-text>
+        <oj-input-text readonly="true"  label-hint="Titlu carte" value="[[record().book]]"></oj-input-text>
+        <oj-text-area readonly="true"  label-hint="Numar bucati" value="[[record().amount]]"></oj-text-area>
+        </oj-form-layout>
+      </oj-bind-if>
+  </div>
+  
