@@ -1,0 +1,42 @@
+[
+    {
+        "id": "i1",
+        "name": "John Doe",
+        "title": "Komplot",
+        "image": "../../css/images/avatar_24px.png",
+        "book": "Komplot",
+        "amount": "3"
+    },
+    {
+        "id": "i2",
+        "name": "Jane White",
+        "title": "Bestia",
+        "image": "../../css/images/avatar_24px.png",
+        "book": "Komplot",
+        "amount": "3"
+    },
+    {
+        "id": "i3",
+        "name": "William Shakespeare",
+        "title": "Bratarile doliului",
+        "image": "../../css/images/avatar_24px.png",
+        "book": "Komplot",
+        "amount": "3"
+    },
+    {
+        "id": "i4",
+        "name": "Will Grant",
+        "title": "O fata foarte draguta",
+        "image": "../../css/images/avatar_24px.png",
+        "book": "Komplot",
+        "amount": "3"
+    },
+    {
+        "id": "i5",
+        "name": "Charles Marx",
+        "title": "Golem",
+        "image": "../../css/images/avatar_24px.png",
+        "book": "Komplot",
+        "amount": "3"
+    }
+]

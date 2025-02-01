@@ -1,48 +1,17 @@
 define(['../accUtils',
     "text!../data/orders.json", "knockout",
     "ojs/ojmodulerouter-adapter", "ojs/ojarraydataprovider",
-    "dnd/DemoDataTransfer", "ojs/ojlistviewdnd", "ojs/ojavatar", "ojs/ojlistitemlayout", "ojs/ojmenu",
+    "dnd/DemoDataTransfer", "text!../data/dummy.json", "ojs/ojlistviewdnd", "ojs/ojavatar", "ojs/ojlistitemlayout", "ojs/ojmenu",
     "ojs/ojlistviewdnd", "ojs/ojavatar", "ojs/ojlistitemlayout", "ojs/ojmenu",
     "ojs/ojknockout", "ojs/ojlistview", "ojs/ojmodule-element"
 ],
-    function (accUtils, records, ko, ModuleRouterAdapter, ArrayDataProvider, DemoDataTransfer_1) {
+    function (accUtils, records, ko, ModuleRouterAdapter, ArrayDataProvider, DemoDataTransfer_1, DummyJSON) {
         function OrdersViewModel(args) {
 
-        this.sourceData = [
-                {
-                    id: 'i1',
-                    name: 'John Doe',
-                    title: 'Komplot',
-                    image: '../../css/images/avatar_24px.png'
-                },
-                {
-                    id: 'i2',
-                    name: 'Jane White',
-                    title: 'Bestia',
-                    image: '../../css/images/avatar_24px.png'
-                },
-                {
-                    id: 'i3',
-                    name: 'William Shakespeare',
-                    title: 'Bratarile doliului',
-                    image: '../../css/images/avatar_24px.png'
-                },
-                {
-                    id: 'i4',
-                    name: 'Will Grant',
-                    title: 'O fata foarte draguta',
-                    image: '../../css/images/avatar_24px.png'
-                },
-                {
-                    id: 'i5',
-                    name: 'Charles Marx',
-                    title: 'Golem',
-                    image: '../../css/images/avatar_24px.png'
-                }
-            ];
+            this.sourceData = ko.observableArray(JSON.parse(DummyJSON));
 
             this.targetData = [];
-            this.sourceArr = ko.observableArray(this.sourceData);
+            this.sourceArr = ko.observableArray(this.sourceData());
             this.sourceDataProvider = new ArrayDataProvider(this.sourceArr, {
                 keyAttributes: 'id'
             });
@@ -50,7 +19,7 @@ define(['../accUtils',
             this.targetDataProvider = new ArrayDataProvider(this.targetArr, {
                 keyAttributes: 'id'
             });
-            
+
             this.clipboard = new DemoDataTransfer_1.DemoDataTransfer();
             this.cutItem = ko.observable();
             this.handleDrop = (event, context) => {
@@ -83,7 +52,6 @@ define(['../accUtils',
             this._removeSourceItem = (itemId) => {
                 const arr = this.sourceArr();
                 for (let j = 0; j < arr.length; j++) {
-                    // remove the selected items from array
                     if (arr[j].id === itemId) {
                         arr.splice(j, 1)[0];
                         break;
@@ -94,7 +62,6 @@ define(['../accUtils',
             this._insertTargetItem = (data, index) => {
                 const arr = this.targetArr();
                 if (index === -1) {
-                    // empty list case
                     arr.push(data);
                 }
                 else {
@@ -140,7 +107,11 @@ define(['../accUtils',
                 });
                 return keys.indexOf(key);
             };
-        
+
+
+
+
+
 
             this.orderData = JSON.parse(records).orders;
             this.dataProvider = new ArrayDataProvider(this.orderData);
